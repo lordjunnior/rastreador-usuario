@@ -1,8 +1,8 @@
-﻿import { createHash } from 'node:crypto';
 import { interpretar, montarUrl, plataformas, validarUsuario } from '../src/components/tools/lib/investigacao';
 const windows = new Map<string, number[]>();
-function limited(ip: string) {
-  const key = createHash('sha256').update(`ru:${ip}`).digest('hex').slice(0, 16);
+async function limited(ip: string) {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`ru:${ip}`));
+  const key = Array.from(new Uint8Array(digest)).slice(0,8).map(b=>b.toString(16).padStart(2,'0')).join('');
   const now = Date.now(); const recent = (windows.get(key) || []).filter(t => now - t < 60_000);
   if (windows.size > 5000) windows.clear();
   if (recent.length >= 6) { windows.set(key, recent); return true; }
@@ -13,7 +13,7 @@ export default async function handler(req: any, res: any) {
   const usuario = String(req.body?.usuario || '').trim();
   if (!validarUsuario(usuario)) return res.status(400).json({ erro: 'Usuário inválido.' });
   const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'anon').split(',')[0].trim();
-  if (limited(ip)) return res.status(429).json({ erro: 'Limite de 6 varreduras por minuto atingido. Aguarde um instante.' });
+  if (await limited(ip)) return res.status(429).json({ erro: 'Limite de 6 varreduras por minuto atingido. Aguarde um instante.' });
   const lista = await Promise.all(plataformas.map(async (p) => {
     const perfil = montarUrl(p.perfil, usuario);
     try {

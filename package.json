@@ -24,7 +24,5 @@
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.2.0"
   },
-  "devDependencies": {
-    "@types/node": "^22.16.5"
-  }
+  "devDependencies": {}
 }
