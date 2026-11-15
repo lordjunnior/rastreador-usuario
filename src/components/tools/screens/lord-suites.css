@@ -1,0 +1,492 @@
+/* Acabamento das suítes LORD. Todas as cores derivam dos tokens globais. */
+.ss-cover-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.ss-cover-kicker::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: var(--ember);
+}
+.ss-cover-title {
+  max-width: 1000px;
+  margin: 18px 0;
+  font-family: Anton, Impact, sans-serif;
+  font-size: clamp(56px, 9vw, 132px);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.ss-cover-title em {
+  display: block;
+  color: var(--primary);
+  font-style: normal;
+}
+.ss-cover-lead {
+  max-width: 720px;
+  color: var(--foreground);
+  font-size: clamp(13px, 1.4vw, 17px);
+  line-height: 1.8;
+}
+.ss-cover-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.ss-cover-meta span {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 72%, transparent);
+  padding: 7px 10px;
+  color: var(--primary);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ss-source-note {
+  color: var(--muted-foreground);
+  font-size: 10px;
+  line-height: 1.8;
+}
+.ss-source-note a {
+  color: var(--primary);
+  text-underline-offset: 3px;
+}
+.ss-action-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 860px) {
+  .ss-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.ss-drop {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  border: 1px dashed var(--primary);
+  background: color-mix(in srgb, var(--primary) 4%, var(--background));
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.2s;
+}
+.ss-drop:hover,
+.ss-drop:focus-within {
+  border-color: var(--ember);
+  background: color-mix(in srgb, var(--primary) 9%, var(--background));
+  transform: translateY(-2px);
+}
+.ss-drop input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.ss-drop svg {
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.ss-drop strong {
+  display: block;
+  color: var(--foreground);
+  font-size: 13px;
+}
+.ss-drop span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted-foreground);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.ss-file-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  color: var(--muted-foreground);
+  font-size: 11px;
+}
+.ss-file-line b {
+  color: var(--foreground);
+  overflow-wrap: anywhere;
+}
+.ss-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.ss-tabs button {
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--muted-foreground);
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.ss-tabs button[aria-selected="true"] {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, var(--background));
+  color: var(--primary);
+}
+.ss-password {
+  position: relative;
+}
+.ss-password .ss-input {
+  padding-right: 92px;
+}
+.ss-password button {
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  translate: 0 -50%;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  padding: 8px;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+}
+.ss-strength {
+  height: 4px;
+  margin-top: 8px;
+  background: var(--border);
+  overflow: hidden;
+}
+.ss-strength i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ember), var(--primary));
+  transition: width 0.3s;
+}
+.ss-message {
+  margin-top: 16px;
+  border-left: 2px solid var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  padding: 13px 15px;
+  color: var(--foreground);
+  font-size: 11px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.ss-message.error {
+  border-color: var(--ember);
+  background: color-mix(in srgb, var(--ember) 8%, transparent);
+}
+.ss-message.neutral {
+  border-color: var(--border);
+  background: var(--background);
+}
+.ss-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+.ss-data-grid > div {
+  min-width: 0;
+  background: var(--background);
+  padding: 14px 16px;
+}
+.ss-data-grid dt {
+  margin-bottom: 6px;
+  color: var(--muted-foreground);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ss-data-grid dd {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.ss-list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--border);
+}
+.ss-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  padding: 12px;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  line-height: 1.7;
+}
+.ss-list li:first-child {
+  border-top: 0;
+}
+.ss-list li > span:first-child {
+  color: var(--primary);
+}
+.ss-signals {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  margin-top: 16px;
+}
+.ss-signal {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--muted-foreground);
+  background: var(--background);
+  padding: 16px;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+.ss-signal:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+}
+.ss-signal.ok {
+  border-left-color: var(--primary);
+}
+.ss-signal.atencao {
+  border-left-color: var(--ember);
+}
+.ss-signal strong {
+  display: block;
+  color: var(--foreground);
+  font-size: 12px;
+}
+.ss-signal p {
+  margin: 8px 0 0;
+  color: var(--muted-foreground);
+  font-size: 10px;
+  line-height: 1.8;
+}
+.ss-source-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+.ss-source-card {
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  background: var(--background);
+  padding: 18px;
+  color: var(--foreground);
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.ss-source-card:hover {
+  background: color-mix(in srgb, var(--primary) 8%, var(--background));
+  transform: translateY(-3px);
+}
+.ss-source-card small {
+  color: var(--primary);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ss-source-card strong {
+  margin-top: 12px;
+  font-size: 13px;
+}
+.ss-source-card p {
+  flex: 1;
+  color: var(--muted-foreground);
+  font-size: 10px;
+  line-height: 1.8;
+}
+.ss-source-card i {
+  color: var(--primary);
+  font-size: 10px;
+  font-style: normal;
+}
+.ss-table-wrap {
+  margin-top: 16px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+.ss-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+.ss-table th {
+  background: var(--background);
+  padding: 11px;
+  color: var(--primary);
+  text-align: left;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ss-table td {
+  max-width: 340px;
+  border-top: 1px solid var(--border);
+  padding: 12px 11px;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  vertical-align: top;
+}
+.ss-table td:first-child {
+  color: var(--foreground);
+}
+.ss-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.ss-proof > div {
+  position: relative;
+  background: var(--background);
+  padding: 18px;
+}
+.ss-proof b {
+  display: block;
+  color: var(--primary);
+  font-family: Anton, Impact, sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+.ss-proof strong {
+  display: block;
+  margin: 7px 0;
+  color: var(--foreground);
+  font-size: 11px;
+}
+.ss-proof p {
+  color: var(--muted-foreground);
+  font-size: 9px;
+  line-height: 1.7;
+}
+.ss-hash {
+  border: 1px solid var(--border);
+  background: var(--background);
+  padding: 14px;
+  color: var(--primary);
+  font-size: 10px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.ss-linked {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--primary);
+  padding: 22px;
+}
+.ss-linked h2 {
+  margin: 0;
+}
+.ss-linked p {
+  max-width: 700px;
+  margin: 8px 0 0;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.ss-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+.ss-btn svg {
+  flex: 0 0 auto;
+}
+a.ss-btn {
+  text-decoration: none;
+}
+.ss-screen-reader {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+@media (max-width: 640px) {
+  .ss-cover-title {
+    font-size: clamp(50px, 17vw, 82px);
+  }
+  .ss-cover-lead {
+    font-size: 12px;
+  }
+  .ss-proof {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ss-action-grid {
+    gap: 14px;
+  }
+  .ss-drop {
+    min-height: 150px;
+  }
+}
+@media print {
+  .tool-app-nav,
+  .ss-no-print,
+  .ss-cover-meta,
+  .ss-tabs,
+  .ss-btn,
+  .ss-faq {
+    display: none !important;
+  }
+  .ss-root,
+  .ss-plate,
+  .ss-data-grid > div,
+  .ss-source-card {
+    background: var(--background) !important;
+    color: var(--foreground) !important;
+  }
+  .ss-wrap {
+    max-width: none;
+    padding: 0;
+  }
+  .ss-plate {
+    break-inside: avoid;
+    border-color: var(--border);
+  }
+  .ss-source-card {
+    min-height: 0;
+  }
+  figure {
+    min-height: 220px !important;
+    max-height: 220px;
+  }
+  .ss-cover-title {
+    font-size: 52px;
+  }
+}
